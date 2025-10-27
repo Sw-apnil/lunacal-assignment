@@ -1,4 +1,4 @@
-# lunacalzip - Professional Portfolio
+# lunacal - Professional Portfolio
 
 A modern, responsive portfolio website built with Next.js and React. This project showcases a professional profile with an interactive about section and image gallery.
 
