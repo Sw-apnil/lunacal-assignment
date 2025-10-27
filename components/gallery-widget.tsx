@@ -1,13 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 
 const GalleryWidget = () => {
-  const [images, setImages] = useState([
-    "/abstract-pattern-1.jpg",
-    "/abstract-pattern-2.jpg",
-    "/abstract-pattern-3.jpg",
-  ])
+  const [images, setImages] = useState(["/gallery-1.jpg", "/gallery-2.jpg", "/gallery-3.jpg"])
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handlePrevious = () => {
@@ -19,7 +16,7 @@ const GalleryWidget = () => {
   }
 
   const handleAddImage = () => {
-    const newImage = `/placeholder.svg?height=300&width=300&query=abstract-pattern-${images.length + 1}`
+    const newImage = `/gallery-${Math.floor(Math.random() * 3) + 1}.jpg`
     setImages([...images, newImage])
   }
 
@@ -123,13 +120,13 @@ const GalleryWidget = () => {
               boxShadow: "0px 2px 4px rgba(0,0,0,0.3)",
             }}
           >
-            <img
+            <Image
               src={image || "/placeholder.svg"}
               alt={`Gallery image ${index + 1}`}
+              width={300}
+              height={300}
               className="w-full h-full object-cover transition-transform duration-300"
-              onError={(e) => {
-                e.currentTarget.src = "/gallery-image.jpg"
-              }}
+              priority={index === 0}
             />
           </div>
         ))}
